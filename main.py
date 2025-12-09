@@ -16,7 +16,8 @@ bot = discord.Client(intents=intents)
 COMMANDS = {
     "!Bober" : cmds.bober,
     "!Bober FEAST" : cmds.bober_feast,
-    "!Bober ART" : cmds.bober_art
+    "!Bober ART" : cmds.bober_art,
+    "!Bober TIME" : cmds.bober_time
 }
 
 @bot.event

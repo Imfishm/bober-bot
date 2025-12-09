@@ -10,3 +10,4 @@ __pycache__/
 
 # Optional: local files, logs
 *.log
+tempCodeRunnerFile*
