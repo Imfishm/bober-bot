@@ -1,0 +1,11 @@
+from datetime import datetime
+
+time = datetime.now()
+seconds = time - time.replace(hour=0, minute=0, second=0, microsecond=0)
+seconds = seconds.total_seconds()
+fsecs = seconds / 0.864
+fhours, remaining_seconds = divmod(fsecs, 10000)
+fminutes, remaining_seconds = divmod(remaining_seconds, 100)
+fsecs = remaining_seconds
+
+print(f"Time in French Revolution Decimal Time: {int(fhours)}:{int(fminutes)}:{int(fsecs)}")
