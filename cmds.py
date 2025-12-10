@@ -5,6 +5,15 @@ for the Bober discord bot (˶ᵔ ᵕ ᵔ˶)
 
 from datetime import datetime
 
+#Dictionary storing all commands
+COMMANDS = {
+    "!Bober" : bober,
+    "!Bober FEAST" : bober_feast,
+    "!Bober ART" : bober_art,
+    "!Bober TIME" : bober_time,
+    "!Bober COMMANDS" : bober_cmds
+}
+
 #Bober shouts his name
 async def bober(message):
     await message.channel.send("I AM BOBER!")
@@ -32,3 +41,7 @@ async def bober_time(message):
     ftime = f"__**{int(fhours)}:{int(fminutes)}:{int(fsecs)}**__"
     send_msg = f"OKAY! IT'S {ftime} IN FRENCH REVOLUTIONARY DECIMAL TIME! YOU'RE WELCOME!"
     await message.channel.send(send_msg)
+
+#Bober lists all of his commands
+async def bober_cmds(message):
+    pass
