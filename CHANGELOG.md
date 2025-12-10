@@ -6,5 +6,7 @@
 - Feast Command '!Bober FEAST'
 - Art Command '!Bober ART'
 - Time Command '!Bober TIME'
-### Fixed
-- No fixes added in this patch
+
+## v0.2.0-alpha - 2025-12-10
+### Reworked
+- Command prefix changed from '!' to '/'
