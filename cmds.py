@@ -7,11 +7,11 @@ from datetime import datetime
 
 #Dictionary storing all commands
 COMMANDS = {
-    "!Bober" : bober,
-    "!Bober FEAST" : bober_feast,
-    "!Bober ART" : bober_art,
-    "!Bober TIME" : bober_time,
-    "!Bober COMMANDS" : bober_cmds
+    "/Bober" : bober,
+    "/Bober FEAST" : bober_feast,
+    "/Bober ART" : bober_art,
+    "/Bober TIME" : bober_time,
+    "/Bober COMMANDS" : bober_cmds
 }
 
 #Bober shouts his name
