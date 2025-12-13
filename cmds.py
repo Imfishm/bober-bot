@@ -46,6 +46,10 @@ class GeneralCommands(commands.Cog):
     async def bober_play(self, interaction: discord.Interaction, song_query: str):
         """Bober plays music for you"""
         await interaction.response.defer()
+
+        if not interaction.user.voice:
+            await interaction.followup.send("Must be connected to a voice channel")
+
         voice_channel = interaction.user.voice.channel
 
         if not voice_channel:
@@ -82,7 +86,15 @@ class GeneralCommands(commands.Cog):
                           "options": "-vn -c:a libopus -b:a 96k"}
         
         source = discord.FFmpegOpusAudio(audio_url, **ffmpeg_options, executable="bin\\ffmpeg\\ffmpeg.exe")
-        voice_client.play(source)
+
+        try:
+            voice_client.play(source)
+            await interaction.followup.send(f"Now playing: {first_track}")
+        except Exception as e:
+            await interaction.followup.send("Could not play track, please try again.")
+            print(f"Track could not be played with error: {e}")
+
+
 
 async def setup(bot):
     await bot.add_cog(GeneralCommands(bot))
