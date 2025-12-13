@@ -87,10 +87,12 @@ class GeneralCommands(commands.Cog):
         
         source = discord.FFmpegOpusAudio(audio_url, **ffmpeg_options, executable="bin\\ffmpeg\\ffmpeg.exe")
 
-        voice_client.play(source)
-        await interaction.followup.send(f"Now playing: {first_track}")
+        def after_playing(error):
+            if error:
+                print("Playback error: {error}")
 
-
+        voice_client.play(source, after=after_playing)
+        await interaction.followup.send(f"Now playing: **{title}**")
 
 
 async def setup(bot):
