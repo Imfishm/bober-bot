@@ -87,12 +87,9 @@ class GeneralCommands(commands.Cog):
         
         source = discord.FFmpegOpusAudio(audio_url, **ffmpeg_options, executable="bin\\ffmpeg\\ffmpeg.exe")
 
-        try:
-            voice_client.play(source)
-            await interaction.followup.send(f"Now playing: {first_track}")
-        except Exception as e:
-            await interaction.followup.send("Could not play track, please try again.")
-            print(f"Track could not be played with error: {e}")
+        voice_client.play(source)
+        await interaction.followup.send(f"Now playing: {first_track}")
+
 
 
 
