@@ -13,7 +13,7 @@ GUILD_ID = 1446565791452364935
 
 intents = discord.Intents.default()
 
-bot = commands.Bot(command_prefix="None", intents=intents)
+bot = commands.Bot(command_prefix=None, intents=intents)
 
 @bot.event
 async def on_ready():

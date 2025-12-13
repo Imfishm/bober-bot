@@ -3,9 +3,10 @@ This file contains all the commands (functions)
 for the Bober discord bot (˶ᵔ ᵕ ᵔ˶)
 """
 import discord
+import requests
+
 from discord import app_commands
 from discord.ext import commands
-
 from datetime import datetime
 
 class GeneralCommands(commands.Cog):
@@ -26,6 +27,13 @@ class GeneralCommands(commands.Cog):
         ftime = f"__**{int(fhours)}:{int(fminutes)}:{int(fsecs)}**__"
         message = f"OKAY! IT'S {ftime} IN FRENCH REVOLUTIONARY DECIMAL TIME! YOU'RE WELCOME!"
         await interaction.response.send_message(message)
+
+    @app_commands.guilds(1446565791452364935)
+    @app_commands.command(name="bober-play", description="Bober plays music for you")
+    #Bober plays music for you 
+    async def bober_play(self, interaction: discord.Interaction, song_request: str):
+        pass
+        
 
 async def setup(bot):
     await bot.add_cog(GeneralCommands(bot))
