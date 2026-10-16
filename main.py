@@ -1,14 +1,9 @@
-import discord
-import os
 import asyncio
-import cmds
-from dotenv import load_dotenv
+
+import discord
 from discord.ext import commands
 
-load_dotenv()
-
-DISCORD_TOKEN = os.getenv("SUPER_SECRET_DISCORD_TOKEN")
-GUILD_ID = 1446565791452364935
+from bober.config import DISCORD_TOKEN, GUILD_ID
 
 intents = discord.Intents.default()
 
@@ -25,12 +20,13 @@ async def on_ready():
         print(f"Failed to sync slash commands: {e}")
 
 async def load_extensions():
-    await bot.load_extension("cmds")
-    print("Commands module loaded")
+    await bot.load_extension("bober.cogs.tracking")
+    print("Tracking module loaded")
 
 async def main():
-    await load_extensions()
-    await bot.start(DISCORD_TOKEN)
+    async with bot:
+        await load_extensions()
+        await bot.start(DISCORD_TOKEN)
 
 if __name__ == "__main__":
     asyncio.run(main())
