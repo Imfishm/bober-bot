@@ -1,0 +1,4145 @@
+{
+ "fixtures": [
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Not Started",
+     "short": "NS",
+     "elapsed": null,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   }
+  }
+ ],
+ "timeline": [
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Not Started",
+     "short": "NS",
+     "elapsed": null,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": []
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "First Half",
+     "short": "1H",
+     "elapsed": 2,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": []
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "First Half",
+     "short": "1H",
+     "elapsed": 9,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 1,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": null,
+      "name": null
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "First Half",
+     "short": "1H",
+     "elapsed": 12,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 1,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "First Half",
+     "short": "1H",
+     "elapsed": 37,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 1,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    }
+   ]
+  },
+  {
+   "error": "Simulated network blip"
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "First Half",
+     "short": "1H",
+     "elapsed": 45,
+     "extra": 3
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Halftime",
+     "short": "HT",
+     "elapsed": 45,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 0
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 51,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 59,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 63,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 67,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 2
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 66,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 69,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 68,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Var",
+     "detail": "Goal cancelled",
+     "comments": "Offside"
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 71,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 68,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Var",
+     "detail": "Goal cancelled",
+     "comments": "Offside"
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519664,
+      "name": "Khalis Merah"
+     },
+     "assist": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 405237,
+      "name": "Kail Boudache"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 77,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 3,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 68,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Var",
+     "detail": "Goal cancelled",
+     "comments": "Offside"
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519664,
+      "name": "Khalis Merah"
+     },
+     "assist": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 405237,
+      "name": "Kail Boudache"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 76,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 85,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 3,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 68,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Var",
+     "detail": "Goal cancelled",
+     "comments": "Offside"
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519664,
+      "name": "Khalis Merah"
+     },
+     "assist": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 405237,
+      "name": "Kail Boudache"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 76,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 84,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Second Yellow card",
+     "comments": "Foul"
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 89,
+     "extra": null
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 3,
+    "away": 1
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 68,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Var",
+     "detail": "Goal cancelled",
+     "comments": "Offside"
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519664,
+      "name": "Khalis Merah"
+     },
+     "assist": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 405237,
+      "name": "Kail Boudache"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 76,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 84,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Second Yellow card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 88,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Missed Penalty",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Second Half",
+     "short": "2H",
+     "elapsed": 90,
+     "extra": 4
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 3,
+    "away": 2
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 68,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Var",
+     "detail": "Goal cancelled",
+     "comments": "Offside"
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519664,
+      "name": "Khalis Merah"
+     },
+     "assist": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 405237,
+      "name": "Kail Boudache"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 76,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 84,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Second Yellow card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 88,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Missed Penalty",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 90,
+      "extra": 3
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Penalty",
+     "comments": null
+    }
+   ]
+  },
+  {
+   "fixture": {
+    "id": 1636293,
+    "referee": "Joao Pinheiro",
+    "timezone": "UTC",
+    "date": "2026-10-15T16:45:00+00:00",
+    "timestamp": 1792082700,
+    "periods": {
+     "first": null,
+     "second": null
+    },
+    "venue": {
+     "id": 666,
+     "name": "Groupama Stadium",
+     "city": "Lyon"
+    },
+    "status": {
+     "long": "Match Finished",
+     "short": "FT",
+     "elapsed": 90,
+     "extra": 5
+    }
+   },
+   "league": {
+    "id": 39,
+    "name": "Premier League (replay)",
+    "country": "World",
+    "logo": "https://media.api-sports.io/football/leagues/3.png",
+    "flag": null,
+    "season": 2026,
+    "round": "League Stage - 2",
+    "standings": true
+   },
+   "teams": {
+    "home": {
+     "id": 80,
+     "name": "Lyon",
+     "logo": "https://media.api-sports.io/football/teams/80.png",
+     "winner": null
+    },
+    "away": {
+     "id": 52,
+     "name": "Crystal Palace",
+     "logo": "https://media.api-sports.io/football/teams/52.png",
+     "winner": null
+    }
+   },
+   "goals": {
+    "home": 3,
+    "away": 2
+   },
+   "score": {
+    "halftime": {
+     "home": null,
+     "away": null
+    },
+    "fulltime": {
+     "home": null,
+     "away": null
+    },
+    "extratime": {
+     "home": null,
+     "away": null
+    },
+    "penalty": {
+     "home": null,
+     "away": null
+    }
+   },
+   "events": [
+    {
+     "time": {
+      "elapsed": 8,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519,
+      "name": "Corentin Tolisso"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 36,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Dissent"
+    },
+    {
+     "time": {
+      "elapsed": 45,
+      "extra": 2
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 50,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": 288102,
+      "name": "Adam Wharton"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 56,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 58,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Yellow Card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2218,
+      "name": "Ismaila Sarr"
+     },
+     "assist": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 62,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2032,
+      "name": "Jörgen Strand Larsen"
+     },
+     "assist": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 68,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 2601,
+      "name": "Daichi Kamada"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Var",
+     "detail": "Goal cancelled",
+     "comments": "Offside"
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 519664,
+      "name": "Khalis Merah"
+     },
+     "assist": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "type": "subst",
+     "detail": "Substitution 1",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 70,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 350856,
+      "name": "Ernest Nuamah"
+     },
+     "assist": {
+      "id": 405237,
+      "name": "Kail Boudache"
+     },
+     "type": "subst",
+     "detail": "Substitution 2",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 76,
+      "extra": null
+     },
+     "team": {
+      "id": 80,
+      "name": "Lyon",
+      "logo": "https://media.api-sports.io/football/teams/80.png"
+     },
+     "player": {
+      "id": 66387,
+      "name": "Pavel Šulc"
+     },
+     "assist": {
+      "id": 33321,
+      "name": "Keito Nakamura"
+     },
+     "type": "Goal",
+     "detail": "Normal Goal",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 84,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 184226,
+      "name": "Yeremy Pino"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Card",
+     "detail": "Second Yellow card",
+     "comments": "Foul"
+    },
+    {
+     "time": {
+      "elapsed": 88,
+      "extra": null
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Missed Penalty",
+     "comments": null
+    },
+    {
+     "time": {
+      "elapsed": 90,
+      "extra": 3
+     },
+     "team": {
+      "id": 52,
+      "name": "Crystal Palace",
+      "logo": "https://media.api-sports.io/football/teams/52.png"
+     },
+     "player": {
+      "id": 1468,
+      "name": "Eddie Nketiah"
+     },
+     "assist": {
+      "id": null,
+      "name": null
+     },
+     "type": "Goal",
+     "detail": "Penalty",
+     "comments": null
+    }
+   ]
+  }
+ ]
+}
