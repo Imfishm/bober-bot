@@ -14,3 +14,13 @@ tempCodeRunnerFile*
 
 # Bin folder
 bin/
+
+# Local databases
+*.db
+
+# Local tooling (not part of the bot)
+.codegraph/
+.pytest_cache/
+.claude/
+.mcp.json
+/CLAUDE.md
