@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"            # picks up requirements.txt and requirements-dev.txt
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    versioning-strategy: increase
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+    groups:
+      runtime:
+        patterns:
+          - "discord.py"
+          - "aiohttp"
+          - "python-dotenv"
+      dev:
+        patterns:
+          - "pytest"
