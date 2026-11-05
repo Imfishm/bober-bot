@@ -48,6 +48,13 @@ pip install -r requirements-dev.txt
 python -m pytest
 ```
 
+Linting and formatting use [Ruff](https://docs.astral.sh/ruff/) (config in `ruff.toml`, checked in CI on every PR):
+
+```
+ruff check --fix
+ruff format
+```
+
 ## Project layout
 
 ```
