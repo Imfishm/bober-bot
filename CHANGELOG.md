@@ -49,3 +49,4 @@
 ### Reworked
 - Unloading the tracking cog now cancels its pending resume task
 - Tests fail on leaked resources and un-awaited coroutines
+- A goal VAR already cancelled is no longer posted again when the API rewrites it (#15)

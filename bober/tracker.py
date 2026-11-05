@@ -40,6 +40,8 @@ class Tracker:
         self.lines = lines
         self.intervals = intervals
         self.task = None
+        # {fixture_id: idents the API listed on the last poll}; tells a fresh rewrite from a long-gone event
+        self.listed = {}
 
     def is_running(self):
         return self.task is not None and not self.task.done()
@@ -238,7 +240,8 @@ class Tracker:
         new, filled, vanished = diff_events(
             events, {ident: r["player_id"] for ident, r in posted.items()}
         )
-        orphans = [posted[ident] for ident in vanished if not posted[ident]["cancelled"]]
+        # Cancelled rows can still be rewritten by the API; list them last so live rows win ties.
+        orphans = sorted((posted[ident] for ident in vanished), key=lambda r: r["cancelled"])
         self._learn_own_goal_convention(events, home_id, away_id, hg, ag)
 
         # Status changes that come before this poll's events
@@ -254,9 +257,19 @@ class Tracker:
 
         for ref in filled:
             await self._fill_player(channel, fixture_id, ref)
+        # A rewrite swaps the old event for the new one in a single poll, but a cancelled row stays
+        # orphaned forever once the API drops it, so only one listed last poll can be a rewrite.
+        # shortcut: in memory, so a rewrite during a restart is reposted; persist it if that shows up.
+        was_listed = self.listed.get(fixture_id, set())
+        candidates = [
+            o
+            for o in orphans
+            if not o["cancelled"] or (o["event_key"], o["occurrence"]) in was_listed
+        ]
         for ref in new:
-            row = find_correction(ref, orphans)
+            row = find_correction(ref, candidates)
             if row is not None:
+                candidates.remove(row)
                 orphans.remove(row)
                 await self._correct_event(channel, fixture_id, row, ref, teams)
             else:
@@ -314,6 +327,8 @@ class Tracker:
             away_goals=ag,
             last_poll_at=utc_now(),
         )
+        # Last, so a poll that fails partway keeps the previous list for the retry.
+        self.listed = {fixture_id: (set(posted) - set(vanished)) | {ref.ident for ref in new}}
         return done
 
     def _learn_own_goal_convention(self, events, home_id, away_id, hg, ag):
@@ -358,7 +373,8 @@ class Tracker:
             player_id(ev),
             embeds.name_of(ev.get("player")),
         )
-        if row["message_id"]:
+        # Re-read: a VAR event earlier in this poll may have cancelled it since the snapshot.
+        if row["message_id"] and not self.storage.posted_event(fixture_id, ref.ident)["cancelled"]:
             label = self._team_label(category, credited, teams)
             await self._edit(
                 channel,
