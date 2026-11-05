@@ -135,8 +135,8 @@ def find_correction(ref, orphans):
         if pid is not None and row["player_id"] is not None:
             if pid != row["player_id"]:
                 continue
-        elif team != ref_team:
-            continue  # without both players known, only trust a same-team minute nudge
+        elif team != ref_team and not (pid is None and row["player_id"] is None and gap == 0):
+            continue  # a team fix before any scorer is known is only trusted at the same minute
         if best_gap is None or gap < best_gap:
             best, best_gap = row, gap
     return best

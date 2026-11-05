@@ -149,7 +149,6 @@ def var_cancel(minute, team):
     }
 
 
-@pytest.mark.xfail(strict=True, reason="known issue: team corrected before the player is known")
 def test_team_corrected_before_player_known_is_not_reposted(storage):
     channel, _ = run(
         storage,

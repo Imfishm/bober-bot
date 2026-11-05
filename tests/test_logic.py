@@ -167,6 +167,13 @@ def test_correction_team_fix_needs_same_player():
     assert find_correction(ref_for(ev(30, 2, "Goal", "Normal Goal")), [orphan]) is None
 
 
+def test_correction_team_fix_without_players_needs_same_minute():
+    orphan = row("1|goal|30")
+    assert find_correction(ref_for(ev(30, 2, "Goal", "Normal Goal")), [orphan]) is orphan
+    assert find_correction(ref_for(ev(31, 2, "Goal", "Normal Goal")), [orphan]) is None
+    assert find_correction(ref_for(ev(30, 2, "Goal", "Normal Goal", 9)), [orphan]) is None
+
+
 def test_correction_rejects_far_minute_and_other_family():
     assert find_correction(ref_for(ev(40, 1, "Goal", "Normal Goal")), [row("1|goal|30")]) is None
     assert find_correction(ref_for(ev(30, 1, "Card", "Red Card")), [row("1|goal|30")]) is None
