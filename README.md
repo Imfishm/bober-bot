@@ -41,12 +41,14 @@ Replay mode plays a scripted match from a file instead of calling the API:
 
 The whole match plays out in about 2 minutes. Remove the line to go live.
 
-Unit tests:
+Tests (fully offline: no Discord token or API key needed, and they run in CI on every PR on Python 3.10 and 3.13):
 
 ```
 pip install -r requirements-dev.txt
 python -m pytest
 ```
+
+They cover the event logic, the API client, storage, the poll loop (with a fake clock), every slash command path, and a smoke test that boots the bot without connecting. Leaked resources and un-awaited coroutines fail the run. Known bugs are kept as `xfail(strict=True)` tests.
 
 Linting and formatting use [Ruff](https://docs.astral.sh/ruff/) (config in `ruff.toml`, checked in CI on every PR):
 
