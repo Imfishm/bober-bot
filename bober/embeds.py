@@ -1,6 +1,7 @@
 """
 Embed builders and Bober's line picker (˶ᵔ ᵕ ᵔ˶)
 """
+
 import json
 import random
 import string
@@ -70,9 +71,11 @@ class BoberLines:
         return all(ctx.get(name) is not None for name in fields)
 
     def pick(self, key, ctx):
-        candidates = [l for l in self.lines.get(key) or [] if self._usable(l, ctx)]
+        candidates = [line for line in self.lines.get(key) or [] if self._usable(line, ctx)]
         if not candidates:
-            candidates = [l for l in self.lines.get("default") or [] if self._usable(l, ctx)]
+            candidates = [
+                line for line in self.lines.get("default") or [] if self._usable(line, ctx)
+            ]
         if not candidates:
             return FALLBACK_LINE
         if len(candidates) > 1 and self._last.get(key) in candidates:
@@ -81,7 +84,9 @@ class BoberLines:
         self._last[key] = line
         try:
             # Bober shouts everything, names included
-            return line.format(**{k: v.upper() if isinstance(v, str) else v for k, v in ctx.items()})
+            return line.format(
+                **{k: v.upper() if isinstance(v, str) else v for k, v in ctx.items()}
+            )
         except (KeyError, IndexError, ValueError):
             return FALLBACK_LINE
 
@@ -164,8 +169,14 @@ def status_embed(kind, match, home_goals, away_goals, line):
 
 
 def _goal_list(goals):
-    return "\n".join(f"{g['minute']} {g['player_name'] or '?'}" + (" (OG)" if g["category"] == "own_goal" else "")
-                     for g in goals) or "None"
+    return (
+        "\n".join(
+            f"{g['minute']} {g['player_name'] or '?'}"
+            + (" (OG)" if g["category"] == "own_goal" else "")
+            for g in goals
+        )
+        or "None"
+    )
 
 
 def fulltime_embed(match, home_goals, away_goals, penalty, goals, reds, line):
@@ -175,8 +186,11 @@ def fulltime_embed(match, home_goals, away_goals, penalty, goals, reds, line):
     embed = discord.Embed(title="🏁 FULL TIME", description=desc, color=COLORS["fulltime"])
     embed.add_field(name="Goals", value=_goal_list(goals), inline=False)
     if reds:
-        embed.add_field(name="Red cards", value="\n".join(f"{r['minute']} {r['player_name'] or '?'}" for r in reds),
-                        inline=False)
+        embed.add_field(
+            name="Red cards",
+            value="\n".join(f"{r['minute']} {r['player_name'] or '?'}" for r in reds),
+            inline=False,
+        )
     return _with_line(embed, line)
 
 
@@ -188,13 +202,18 @@ def catchup_embed(match, minute, home_goals, away_goals, goals, reds, line):
     )
     embed.add_field(name="Goals so far", value=_goal_list(goals), inline=False)
     if reds:
-        embed.add_field(name="Red cards so far",
-                        value="\n".join(f"{r['minute']} {r['player_name'] or '?'}" for r in reds), inline=False)
+        embed.add_field(
+            name="Red cards so far",
+            value="\n".join(f"{r['minute']} {r['player_name'] or '?'}" for r in reds),
+            inline=False,
+        )
     return _with_line(embed, line)
 
 
 def notice_embed(title, text, warning=False):
-    return discord.Embed(title=title, description=text, color=COLORS["warning" if warning else "notice"])
+    return discord.Embed(
+        title=title, description=text, color=COLORS["warning" if warning else "notice"]
+    )
 
 
 def tracking_embed(match, yellows, subs, ping_role, warning):

@@ -1,9 +1,17 @@
+import itertools
 import json
 
 from bober.config import LINES_PATH
 from bober.embeds import FALLBACK_LINE, BoberLines
-from bober.events import (categorize, diff_events, estimate_requests, event_key, find_correction,
-                    own_goal_convention, wanted)
+from bober.events import (
+    categorize,
+    diff_events,
+    estimate_requests,
+    event_key,
+    find_correction,
+    own_goal_convention,
+    wanted,
+)
 
 
 def ev(elapsed, team_id, typ, detail, player_id=None, comments=None, extra=None):
@@ -12,7 +20,9 @@ def ev(elapsed, team_id, typ, detail, player_id=None, comments=None, extra=None)
         "team": {"id": team_id, "name": f"Team {team_id}"},
         "player": {"id": player_id, "name": f"Player {player_id}" if player_id else None},
         "assist": {"id": None, "name": None},
-        "type": typ, "detail": detail, "comments": comments,
+        "type": typ,
+        "detail": detail,
+        "comments": comments,
     }
 
 
@@ -97,7 +107,7 @@ def test_lines_fall_back_to_default(tmp_path):
 def test_lines_no_back_to_back_repeat(tmp_path):
     lines = write_lines(tmp_path, {"goal": ["A", "B"]})
     picks = [lines.pick("goal", {}) for _ in range(20)]
-    assert all(a != b for a, b in zip(picks, picks[1:]))
+    assert all(a != b for a, b in itertools.pairwise(picks))
 
 
 def test_lines_missing_file():
@@ -107,8 +117,22 @@ def test_lines_missing_file():
 
 def test_real_lines_file_is_valid():
     lines = BoberLines(LINES_PATH)
-    keys = ["goal", "own_goal", "penalty_goal", "missed_penalty", "yellow_card", "red_card", "substitution",
-            "var_goal_cancelled", "var_other", "kickoff", "halftime", "second_half", "fulltime", "default"]
+    keys = [
+        "goal",
+        "own_goal",
+        "penalty_goal",
+        "missed_penalty",
+        "yellow_card",
+        "red_card",
+        "substitution",
+        "var_goal_cancelled",
+        "var_other",
+        "kickoff",
+        "halftime",
+        "second_half",
+        "fulltime",
+        "default",
+    ]
     ctx = {"team": "T", "opponent": "O", "player": "P", "minute": "1'", "score": "0–0"}
     for key in keys:
         assert len(lines.lines[key]) == 10, key
@@ -162,4 +186,9 @@ def test_own_goal_convention():
     # Score not updated yet / no own goals / symmetric -> can't tell
     assert own_goal_convention(og_under_home, 1, 2, 1, 0) is None
     assert own_goal_convention([ev(10, 1, "Goal", "Normal Goal")], 1, 2, 1, 0) is None
-    assert own_goal_convention([ev(5, 1, "Goal", "Own Goal"), ev(9, 2, "Goal", "Own Goal")], 1, 2, 1, 1) is None
+    assert (
+        own_goal_convention(
+            [ev(5, 1, "Goal", "Own Goal"), ev(9, 2, "Goal", "Own Goal")], 1, 2, 1, 1
+        )
+        is None
+    )

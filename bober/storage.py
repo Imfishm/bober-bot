@@ -2,6 +2,7 @@
 SQLite persistence: fixture cache, the tracked match, posted events and the daily request budget.
 Queries are tiny, so they run directly on the event loop.
 """
+
 import json
 import sqlite3
 
@@ -62,7 +63,11 @@ CREATE TABLE IF NOT EXISTS budget (
 """
 
 TRACKED_SETTABLE = {
-    "last_status", "last_elapsed", "home_goals", "away_goals", "last_poll_at",
+    "last_status",
+    "last_elapsed",
+    "home_goals",
+    "away_goals",
+    "last_poll_at",
 }
 
 
@@ -79,7 +84,9 @@ class Storage:
     # --- fixture cache ---
 
     def has_fixture_day(self, utc_date):
-        row = self.conn.execute("SELECT 1 FROM fixture_days WHERE utc_date = ?", (utc_date,)).fetchone()
+        row = self.conn.execute(
+            "SELECT 1 FROM fixture_days WHERE utc_date = ?", (utc_date,)
+        ).fetchone()
         return row is not None
 
     def save_fixture_day(self, utc_date, fixtures, fetched_at):
@@ -95,12 +102,15 @@ class Storage:
             )
 
     def fixtures_for_day(self, utc_date):
-        rows = self.conn.execute("SELECT data FROM fixtures WHERE utc_date = ?", (utc_date,)).fetchall()
+        rows = self.conn.execute(
+            "SELECT data FROM fixtures WHERE utc_date = ?", (utc_date,)
+        ).fetchall()
         return [json.loads(r["data"]) for r in rows]
 
     def cached_fixture(self, utc_date, fixture_id):
         row = self.conn.execute(
-            "SELECT data FROM fixtures WHERE utc_date = ? AND fixture_id = ?", (utc_date, fixture_id)
+            "SELECT data FROM fixtures WHERE utc_date = ? AND fixture_id = ?",
+            (utc_date, fixture_id),
         ).fetchone()
         return json.loads(row["data"]) if row else None
 
@@ -112,16 +122,28 @@ class Storage:
     def start_tracking(self, fixture, channel_id, user_id, yellows, subs, ping_role_id, now):
         with self.conn:
             # A fixture tracked earlier (then untracked) starts fresh
-            self.conn.execute("DELETE FROM tracked WHERE fixture_id = ?", (fixture["fixture"]["id"],))
-            self.conn.execute("DELETE FROM posted_events WHERE fixture_id = ?", (fixture["fixture"]["id"],))
+            self.conn.execute(
+                "DELETE FROM tracked WHERE fixture_id = ?", (fixture["fixture"]["id"],)
+            )
+            self.conn.execute(
+                "DELETE FROM posted_events WHERE fixture_id = ?", (fixture["fixture"]["id"],)
+            )
             self.conn.execute(
                 """INSERT INTO tracked (fixture_id, channel_id, user_id, yellows, subs, ping_role_id,
                                         home_name, away_name, league_name, kickoff_ts, started_at)
                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                 (
-                    fixture["fixture"]["id"], channel_id, user_id, int(yellows), int(subs), ping_role_id,
-                    fixture["teams"]["home"]["name"], fixture["teams"]["away"]["name"],
-                    fixture["league"]["name"], fixture["fixture"]["timestamp"], now,
+                    fixture["fixture"]["id"],
+                    channel_id,
+                    user_id,
+                    int(yellows),
+                    int(subs),
+                    ping_role_id,
+                    fixture["teams"]["home"]["name"],
+                    fixture["teams"]["away"]["name"],
+                    fixture["league"]["name"],
+                    fixture["fixture"]["timestamp"],
+                    now,
                 ),
             )
 
@@ -131,12 +153,15 @@ class Storage:
             raise ValueError(f"Not settable: {bad}")
         cols = ", ".join(f"{k} = ?" for k in fields)
         with self.conn:
-            self.conn.execute(f"UPDATE tracked SET {cols} WHERE fixture_id = ?", (*fields.values(), fixture_id))
+            self.conn.execute(
+                f"UPDATE tracked SET {cols} WHERE fixture_id = ?", (*fields.values(), fixture_id)
+            )
 
     def count_match_request(self, fixture_id):
         with self.conn:
             self.conn.execute(
-                "UPDATE tracked SET requests_used = requests_used + 1 WHERE fixture_id = ?", (fixture_id,)
+                "UPDATE tracked SET requests_used = requests_used + 1 WHERE fixture_id = ?",
+                (fixture_id,),
             )
 
     def stop_tracking(self, fixture_id):
@@ -146,8 +171,9 @@ class Storage:
     # --- posted events ---
 
     def posted_rows(self, fixture_id):
-        return self.conn.execute("SELECT * FROM posted_events WHERE fixture_id = ? ORDER BY seq",
-                                 (fixture_id,)).fetchall()
+        return self.conn.execute(
+            "SELECT * FROM posted_events WHERE fixture_id = ? ORDER BY seq", (fixture_id,)
+        ).fetchall()
 
     def record_event(self, fixture_id, ref, team_id, minute, player_id, player_name, message_id):
         with self.conn:
@@ -155,7 +181,17 @@ class Storage:
                 """INSERT OR IGNORE INTO posted_events
                    (fixture_id, event_key, occurrence, category, team_id, minute, player_id, player_name, message_id)
                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                (fixture_id, ref.key, ref.occurrence, ref.category, team_id, minute, player_id, player_name, message_id),
+                (
+                    fixture_id,
+                    ref.key,
+                    ref.occurrence,
+                    ref.category,
+                    team_id,
+                    minute,
+                    player_id,
+                    player_name,
+                    message_id,
+                ),
             )
 
     def posted_event(self, fixture_id, ident):
@@ -180,7 +216,16 @@ class Storage:
                                             player_id = COALESCE(?, player_id),
                                             player_name = COALESCE(?, player_name)
                    WHERE seq = ?""",
-                (ref.key, ref.occurrence, ref.category, team_id, minute, player_id, player_name, seq),
+                (
+                    ref.key,
+                    ref.occurrence,
+                    ref.category,
+                    team_id,
+                    minute,
+                    player_id,
+                    player_name,
+                    seq,
+                ),
             )
 
     def latest_live_goal(self, fixture_id, team_id=None):
@@ -213,7 +258,9 @@ class Storage:
 
     def set_meta(self, key, value):
         with self.conn:
-            self.conn.execute("INSERT OR REPLACE INTO meta (key, value) VALUES (?, ?)", (key, value))
+            self.conn.execute(
+                "INSERT OR REPLACE INTO meta (key, value) VALUES (?, ?)", (key, value)
+            )
 
     # --- request budget ---
 
@@ -223,13 +270,16 @@ class Storage:
             self.conn.execute("UPDATE budget SET used = used + 1 WHERE utc_date = ?", (utc_date,))
             if header_remaining is not None:
                 self.conn.execute(
-                    "UPDATE budget SET header_remaining = ? WHERE utc_date = ?", (header_remaining, utc_date)
+                    "UPDATE budget SET header_remaining = ? WHERE utc_date = ?",
+                    (header_remaining, utc_date),
                 )
 
     def mark_budget_exhausted(self, utc_date):
         with self.conn:
             self.conn.execute("INSERT OR IGNORE INTO budget (utc_date) VALUES (?)", (utc_date,))
-            self.conn.execute("UPDATE budget SET header_remaining = 0 WHERE utc_date = ?", (utc_date,))
+            self.conn.execute(
+                "UPDATE budget SET header_remaining = 0 WHERE utc_date = ?", (utc_date,)
+            )
 
     def budget_row(self, utc_date):
         return self.conn.execute("SELECT * FROM budget WHERE utc_date = ?", (utc_date,)).fetchone()

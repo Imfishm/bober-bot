@@ -1,6 +1,7 @@
 """
 API-Football client (and a replay stand-in for testing without spending requests).
 """
+
 import asyncio
 import copy
 import json
@@ -98,7 +99,9 @@ class ReplayApi:
             data = json.load(f)
         offset = utc_now() + 60 - data["fixtures"][0]["fixture"]["timestamp"]
         self.fixtures = [self._shift(f, offset) for f in data["fixtures"]]
-        self.timeline = [step if "error" in step else self._shift(step, offset) for step in data["timeline"]]
+        self.timeline = [
+            step if "error" in step else self._shift(step, offset) for step in data["timeline"]
+        ]
         self.step = 0
 
     @staticmethod
