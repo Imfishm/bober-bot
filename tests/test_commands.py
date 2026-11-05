@@ -13,8 +13,8 @@ from bober.cogs import tracking
 from bober.config import BUDGET_FLOOR, LIVE_INTERVALS
 from bober.football_api import ApiError
 
-NOW = KICKOFF - 3600  # an hour before the default fixture's kickoff
-TODAY = "2026-11-04"
+NOW = KICKOFF - 3600  # an hour before the default fixture's kickoff (07:00 UTC)
+MIDNIGHT = NOW - NOW % tracking.DAY  # the UTC midnight starting NOW's day
 OWNER, STRANGER = 100, 200
 
 
@@ -56,7 +56,6 @@ def cog(monkeypatch, storage, channel):
     monkeypatch.setattr(tracking, "REPLAY_PATH", None)
     monkeypatch.setattr(tracking, "INTERVALS", LIVE_INTERVALS)
     monkeypatch.setattr(tracking, "utc_now", lambda: NOW)
-    monkeypatch.setattr(tracking, "utc_today", lambda: TODAY)
     # Built by hand instead of cog_load, so there's no real HTTP session or Tracker
     c = tracking.Tracking(FakeBot(channel))
     c.storage = storage
@@ -124,8 +123,8 @@ TRACK_CASES = [
     ("no-api-key", no_api, "1", "no API key", False),
     ("already-tracking", already_tracking, "1", "already tracking **Ajax vs PSV**", False),
     ("not-a-number", nothing, "Lyon", "Pick a match", False),
-    ("fixtures-fail", fixtures_fail, "1", "couldn't load today's matches: boom", False),
-    ("not-today", nothing, "999", "isn't one of today's matches", False),
+    ("fixtures-fail", fixtures_fail, "1", "couldn't load the match list: boom", False),
+    ("not-listed", nothing, "999", "isn't a match Bober can track right now", False),
     ("already-over", match_over, "1", "already over", False),
     ("no-permissions", no_permissions, "1", "can't post embeds", False),
     ("budget-floor", at_budget_floor, "1", "out of API requests", False),
@@ -338,3 +337,99 @@ async def test_autocomplete_without_api_key_makes_no_request(cog, channel, monke
     monkeypatch.setattr(tracking, "API_FOOTBALL_KEY", None)
     assert await cog.match_autocomplete(interaction(channel), "") == []
     assert cog.api.fixtures_on_calls == 0
+
+
+# --- matches around midnight UTC (#16) ---
+
+YESTERDAY = tracking.utc_date(MIDNIGHT - 1)
+TODAY = tracking.utc_date(MIDNIGHT)
+TOMORROW = tracking.utc_date(MIDNIGHT + tracking.DAY)
+
+
+async def choice_ids(cog, channel):
+    return [c.value for c in await cog.match_autocomplete(interaction(channel), "")]
+
+
+async def test_evening_lists_tomorrows_early_kickoffs(cog, channel, monkeypatch):
+    tomorrow = MIDNIGHT + tracking.DAY
+    monkeypatch.setattr(tracking, "utc_now", lambda: tomorrow - 3600)  # 23:00 UTC
+    cog.api.fixtures = {
+        TODAY: [fixture_item(fixture_id=1, timestamp=tomorrow - 1800)],
+        TOMORROW: [
+            fixture_item(fixture_id=2, timestamp=tomorrow + 1800),  # 00:30, evening in the Americas
+            fixture_item(fixture_id=3, timestamp=tomorrow + 12 * 3600),  # tomorrow's lunchtime
+        ],
+    }
+    assert await choice_ids(cog, channel) == ["1", "2"]
+
+    inter = interaction(channel)
+    await cog.bober_track.callback(cog, inter, "2")
+    assert "Bober is on it" in followup_text(inter)
+    assert cog.api.fixtures_on_calls == 2  # each day fetched once
+
+
+async def test_after_midnight_lists_yesterdays_running_matches(cog, channel, monkeypatch):
+    monkeypatch.setattr(tracking, "utc_now", lambda: MIDNIGHT + 3600)  # 01:00 UTC
+    cog.api.fixtures = {
+        YESTERDAY: [
+            fixture_item(fixture_id=1, timestamp=MIDNIGHT - 3600),  # still running
+            fixture_item(fixture_id=2, timestamp=MIDNIGHT - 5 * 3600),  # must be over
+        ],
+        TODAY: [fixture_item(fixture_id=3, timestamp=MIDNIGHT + 7200)],
+    }
+    assert await choice_ids(cog, channel) == ["1", "3"]
+
+    inter = interaction(channel)
+    await cog.bober_track.callback(cog, inter, "1")
+    assert "Bober is on it" in followup_text(inter)
+    assert cog.api.fixtures_on_calls == 2
+
+
+async def test_midday_fetches_only_today(cog, channel, monkeypatch):
+    monkeypatch.setattr(tracking, "utc_now", lambda: MIDNIGHT + 12 * 3600)
+    cog.api.fixtures = {TODAY: [fixture_item(fixture_id=1, timestamp=MIDNIGHT + 13 * 3600)]}
+    assert await choice_ids(cog, channel) == ["1"]
+    assert cog.api.fixtures_on_calls == 1
+
+
+async def test_adjacent_day_failure_still_lists_today(cog, channel, monkeypatch):
+    tomorrow = MIDNIGHT + tracking.DAY
+    monkeypatch.setattr(tracking, "utc_now", lambda: tomorrow - 3600)
+    cog.api.fixtures = {
+        TODAY: [fixture_item(fixture_id=1, timestamp=tomorrow - 1800)],
+        TOMORROW: ApiError("boom"),
+    }
+    assert await choice_ids(cog, channel) == ["1"]
+
+
+async def test_failed_fetch_is_not_retried_on_every_keystroke(cog, channel, monkeypatch):
+    tomorrow = MIDNIGHT + tracking.DAY
+    now = [tomorrow - 3600]
+    monkeypatch.setattr(tracking, "utc_now", lambda: now[0])
+    cog.api.fixtures = {TODAY: [], TOMORROW: ApiError("boom")}
+    await choice_ids(cog, channel)
+    await choice_ids(cog, channel)
+    assert cog.api.fixtures_on_calls == 2  # today once, tomorrow once
+
+    now[0] += tracking.FETCH_RETRY
+    await choice_ids(cog, channel)
+    assert cog.api.fixtures_on_calls == 3  # tomorrow retried after the cooldown
+
+
+async def test_after_midnight_kickoff_uses_tomorrows_budget(cog, channel, monkeypatch):
+    tomorrow = MIDNIGHT + tracking.DAY
+    monkeypatch.setattr(tracking, "utc_now", lambda: tomorrow - 3600)
+    cog.api.fixtures = {TOMORROW: [fixture_item(fixture_id=2, timestamp=tomorrow + 1800)]}
+    cog.api.remaining = BUDGET_FLOOR  # today's budget is spent
+    inter = interaction(channel)
+    await cog.bober_track.callback(cog, inter, "2")
+    text = followup_text(inter)
+    assert "Bober is on it" in text and "⚠️" not in text
+
+
+async def test_same_fixture_on_two_days_is_listed_once(cog, channel, monkeypatch):
+    # Replay mode serves its one match for every date
+    tomorrow = MIDNIGHT + tracking.DAY
+    monkeypatch.setattr(tracking, "utc_now", lambda: tomorrow - 3600)
+    cog.api.fixtures = [fixture_item(fixture_id=1, timestamp=tomorrow - 1800)]
+    assert await choice_ids(cog, channel) == ["1"]

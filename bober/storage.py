@@ -107,13 +107,6 @@ class Storage:
         ).fetchall()
         return [json.loads(r["data"]) for r in rows]
 
-    def cached_fixture(self, utc_date, fixture_id):
-        row = self.conn.execute(
-            "SELECT data FROM fixtures WHERE utc_date = ? AND fixture_id = ?",
-            (utc_date, fixture_id),
-        ).fetchone()
-        return json.loads(row["data"]) if row else None
-
     # --- tracked match ---
 
     def active_match(self):

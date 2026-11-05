@@ -73,8 +73,7 @@ def test_fixture_day_cache(storage):
     storage.save_fixture_day(DAY, [fixture_item(fixture_id=1), fixture_item(fixture_id=2)], 0)
     assert storage.has_fixture_day(DAY)
     assert {f["fixture"]["id"] for f in storage.fixtures_for_day(DAY)} == {1, 2}
-    assert storage.cached_fixture(DAY, 2)["fixture"]["id"] == 2
-    assert storage.cached_fixture("2026-11-05", 2) is None
+    assert storage.fixtures_for_day("2026-11-05") == []
 
     # Saving the day again replaces it
     storage.save_fixture_day(DAY, [fixture_item(fixture_id=3)], 0)

@@ -50,3 +50,4 @@
 - Unloading the tracking cog now cancels its pending resume task
 - Tests fail on leaked resources and un-awaited coroutines
 - A goal VAR already cancelled is no longer posted again when the API rewrites it (#15)
+- bober-track also lists matches around midnight UTC: yesterday's still-running matches and, from 18:00 UTC, tomorrow's kickoffs before 06:00 UTC; kickoff times show the weekday (#16)
