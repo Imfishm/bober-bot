@@ -4,7 +4,6 @@ Tracker behaviour when the API rewrites or deletes events it already sent, and o
 
 import asyncio
 
-import pytest
 from fakes import FakeChannel
 
 from bober.config import LINES_PATH, REPLAY_INTERVALS
@@ -133,8 +132,7 @@ def test_own_goal_known_convention_beneficiary(storage):
     assert goal_messages(channel)[0].embeds[0].fields[0].name == "Lyon"
 
 
-# --- Known issues (see CLAUDE.md). strict=True: once fixed these XPASS and fail the run, so the
-# marker and the Known issues entry get removed together.
+# --- VAR-cancelled goals
 
 
 def var_cancel(minute, team):
@@ -160,7 +158,6 @@ def test_team_corrected_before_player_known_is_not_reposted(storage):
     assert len(goal_messages(channel)) == 1
 
 
-@pytest.mark.xfail(strict=True, reason="known issue: correcting a VAR-cancelled goal reposts it")
 def test_correcting_a_var_cancelled_goal_is_not_reposted(storage):
     channel, _ = run(
         storage,
@@ -170,4 +167,98 @@ def test_correcting_a_var_cancelled_goal_is_not_reposted(storage):
             poll([goal(67, HOME, player=9), var_cancel(67, HOME)], 0, 0),  # minute nudged
         ],
     )
+    msgs = goal_messages(channel)
+    assert len(msgs) == 1
+    assert "CANCELLED BY VAR" in msgs[0].embeds[0].title  # still struck through after the rewrite
+
+
+def test_new_goal_near_a_dropped_cancelled_goal_is_posted(storage):
+    channel, _ = run(
+        storage,
+        [
+            poll([goal(67, HOME, player=9)], 1, 0),
+            poll([goal(67, HOME, player=9), var_cancel(67, HOME)], 0, 0),
+            poll([var_cancel(67, HOME)], 0, 0),  # API drops the cancelled goal for good
+            poll([var_cancel(67, HOME), goal(69, HOME)], 1, 0),  # real goal, scorer not known yet
+        ],
+    )
+    assert len(goal_messages(channel)) == 2
+
+
+def test_same_scorer_again_after_a_dropped_cancelled_goal_is_posted(storage):
+    channel, _ = run(
+        storage,
+        [
+            poll([goal(67, HOME, player=9)], 1, 0),
+            poll([goal(67, HOME, player=9), var_cancel(67, HOME)], 0, 0),
+            poll([var_cancel(67, HOME)], 0, 0),
+            poll([var_cancel(67, HOME), goal(69, HOME, player=9)], 1, 0),  # he scores again
+        ],
+    )
+    assert len(goal_messages(channel)) == 2
+
+
+def test_rewriting_a_cancelled_goal_before_the_scorer_is_known_is_not_reposted(storage):
+    channel, _ = run(
+        storage,
+        [
+            poll([goal(66, HOME)], 1, 0),
+            poll([goal(66, HOME), var_cancel(67, HOME)], 0, 0),
+            poll([goal(67, HOME), var_cancel(67, HOME)], 0, 0),  # minute nudged, still no scorer
+        ],
+    )
     assert len(goal_messages(channel)) == 1
+
+
+def test_scorer_filled_into_a_rewritten_cancelled_goal_keeps_it_struck(storage):
+    channel, storage = run(
+        storage,
+        [
+            poll([goal(66, HOME)], 1, 0),
+            poll([goal(66, HOME), var_cancel(67, HOME)], 0, 0),
+            poll([goal(67, HOME), var_cancel(67, HOME)], 0, 0),
+            poll([goal(67, HOME, player=9), var_cancel(67, HOME)], 0, 0),  # scorer filled in late
+        ],
+    )
+    (msg,) = goal_messages(channel)
+    assert "CANCELLED BY VAR" in msg.embeds[0].title
+    assert "Player 9" in msg.embeds[0].fields[0].value
+    assert storage.events_of(1, ["goal"]) == []  # still left out of the summaries
+
+
+def test_var_cancel_and_rewrite_in_one_poll_keeps_the_goal_struck(storage):
+    channel, _ = run(
+        storage,
+        [
+            poll([goal(66, HOME, player=9)], 1, 0),
+            # VAR listed first, so the goal is cancelled before its rewrite is applied
+            poll([var_cancel(67, HOME), goal(67, HOME, player=9)], 0, 0),
+        ],
+    )
+    (msg,) = goal_messages(channel)
+    assert "CANCELLED BY VAR" in msg.embeds[0].title
+
+
+def test_later_var_cancel_skips_a_rewritten_cancelled_goal(storage):
+    channel, _ = run(
+        storage,
+        [
+            poll([goal(60, HOME, player=7)], 1, 0),
+            poll([goal(60, HOME, player=7), goal(66, HOME, player=9)], 2, 0),
+            poll([goal(60, HOME, player=7), goal(66, HOME, player=9), var_cancel(67, HOME)], 1, 0),
+            poll([goal(60, HOME, player=7), goal(67, HOME, player=9), var_cancel(67, HOME)], 1, 0),
+            poll(  # a second VAR call takes back the 60' goal, not the already-cancelled one
+                [
+                    goal(60, HOME, player=7),
+                    goal(67, HOME, player=9),
+                    var_cancel(67, HOME),
+                    var_cancel(70, HOME),
+                ],
+                0,
+                0,
+            ),
+        ],
+    )
+    first, second = goal_messages(channel)
+    assert "CANCELLED BY VAR" in first.embeds[0].title
+    assert second.embeds[0].title.count("CANCELLED BY VAR") == 1
