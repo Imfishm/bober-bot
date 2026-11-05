@@ -1,13 +1,15 @@
 """
 Tracker behaviour when the API rewrites or deletes events it already sent, and own-goal attribution.
 """
+
 import asyncio
+
+from test_replay import FakeChannel
 
 from bober.config import LINES_PATH, REPLAY_INTERVALS
 from bober.embeds import BoberLines
 from bober.storage import Storage
 from bober.tracker import OG_META_KEY, Tracker
-from test_replay import FakeChannel
 
 HOME, AWAY = 10, 20
 
@@ -18,13 +20,19 @@ def goal(minute, team, detail="Normal Goal", player=None):
         "team": {"id": team, "name": "Lyon" if team == HOME else "Palace"},
         "player": {"id": player, "name": f"Player {player}" if player else None},
         "assist": {"id": None, "name": None},
-        "type": "Goal", "detail": detail, "comments": None,
+        "type": "Goal",
+        "detail": detail,
+        "comments": None,
     }
 
 
 def poll(events, home, away, status="1H", elapsed=50):
     return {
-        "fixture": {"id": 1, "timestamp": 0, "status": {"short": status, "long": "", "elapsed": elapsed}},
+        "fixture": {
+            "id": 1,
+            "timestamp": 0,
+            "status": {"short": status, "long": "", "elapsed": elapsed},
+        },
         "teams": {"home": {"id": HOME, "name": "Lyon"}, "away": {"id": AWAY, "name": "Palace"}},
         "goals": {"home": home, "away": away},
         "score": {},
@@ -36,11 +44,18 @@ def run(polls, convention=None):
     storage = Storage(":memory:")
     fixture = poll([], 0, 0, status="NS")
     fixture["league"] = {"name": "Test League"}
-    storage.start_tracking(fixture, channel_id=1, user_id=1, yellows=False, subs=False, ping_role_id=None, now=-60)
+    storage.start_tracking(
+        fixture, channel_id=1, user_id=1, yellows=False, subs=False, ping_role_id=None, now=-60
+    )
     if convention is not None:
         storage.set_meta(OG_META_KEY, convention)
-    tracker = Tracker(bot=None, api=None, storage=storage, lines=BoberLines(LINES_PATH),
-                      intervals=REPLAY_INTERVALS)
+    tracker = Tracker(
+        bot=None,
+        api=None,
+        storage=storage,
+        lines=BoberLines(LINES_PATH),
+        intervals=REPLAY_INTERVALS,
+    )
     channel = FakeChannel()
 
     async def go():
@@ -56,10 +71,12 @@ def goal_messages(channel):
 
 
 def test_minute_correction_edits_instead_of_reposting():
-    channel, storage = run([
-        poll([goal(44, HOME, player=9)], 1, 0),
-        poll([goal(45, HOME, player=9)], 1, 0),
-    ])
+    channel, storage = run(
+        [
+            poll([goal(44, HOME, player=9)], 1, 0),
+            poll([goal(45, HOME, player=9)], 1, 0),
+        ]
+    )
     goals = goal_messages(channel)
     assert len(goals) == 1
     assert goals[0].embeds[0].title.endswith("45'")
@@ -67,10 +84,12 @@ def test_minute_correction_edits_instead_of_reposting():
 
 
 def test_detail_and_minute_correction_retitles():
-    channel, _ = run([
-        poll([goal(30, HOME)], 1, 0),
-        poll([goal(31, HOME, "Penalty", player=9)], 1, 0),
-    ])
+    channel, _ = run(
+        [
+            poll([goal(30, HOME)], 1, 0),
+            poll([goal(31, HOME, "Penalty", player=9)], 1, 0),
+        ]
+    )
     goals = goal_messages(channel)
     assert len(goals) == 1
     assert goals[0].embeds[0].title.startswith("⚽ PENALTY GOAL — 31'")
@@ -78,11 +97,13 @@ def test_detail_and_minute_correction_retitles():
 
 
 def test_deleted_goal_waits_for_scoreboard_then_struck():
-    channel, storage = run([
-        poll([goal(30, HOME)], 1, 0),
-        poll([], 1, 0),  # event gone but score still 1-0: could be a blip, leave it
-        poll([], 0, 0),  # scoreboard agrees: it's gone
-    ])
+    channel, storage = run(
+        [
+            poll([goal(30, HOME)], 1, 0),
+            poll([], 1, 0),  # event gone but score still 1-0: could be a blip, leave it
+            poll([], 0, 0),  # scoreboard agrees: it's gone
+        ]
+    )
     struck = goal_messages(channel)[0].embeds[0].title
     assert struck.startswith("~~") and "TAKEN BACK" in struck
     assert any("GOAL TAKEN BACK" in m.embeds[0].title for m in channel.messages)

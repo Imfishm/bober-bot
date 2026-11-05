@@ -1,6 +1,7 @@
 """
 Runs the scripted replay through the real Tracker processing with a fake Discord channel.
 """
+
 import asyncio
 import itertools
 import json
@@ -41,10 +42,22 @@ def run_replay(yellows=False, subs=False, ping_role_id=None):
         data = json.load(f)
     storage = Storage(":memory:")
     fixture = data["fixtures"][0]
-    storage.start_tracking(fixture, channel_id=1, user_id=1, yellows=yellows, subs=subs,
-                           ping_role_id=ping_role_id, now=fixture["fixture"]["timestamp"] - 60)
-    tracker = Tracker(bot=None, api=None, storage=storage, lines=BoberLines(LINES_PATH),
-                      intervals=REPLAY_INTERVALS)
+    storage.start_tracking(
+        fixture,
+        channel_id=1,
+        user_id=1,
+        yellows=yellows,
+        subs=subs,
+        ping_role_id=ping_role_id,
+        now=fixture["fixture"]["timestamp"] - 60,
+    )
+    tracker = Tracker(
+        bot=None,
+        api=None,
+        storage=storage,
+        lines=BoberLines(LINES_PATH),
+        intervals=REPLAY_INTERVALS,
+    )
     channel = FakeChannel()
 
     async def go():
@@ -87,7 +100,10 @@ def test_replay_late_filled_scorer_is_edited():
 def test_replay_var_strikes_cancelled_goal_and_fulltime_omits_it():
     channel, _ = run_replay()
     cancelled = next(m for m in channel.messages if "66'" in m.embeds[0].title)
-    assert cancelled.embeds[0].title.startswith("~~") and "CANCELLED BY VAR" in cancelled.embeds[0].title
+    assert (
+        cancelled.embeds[0].title.startswith("~~")
+        and "CANCELLED BY VAR" in cancelled.embeds[0].title
+    )
     fulltime = channel.messages[-1].embeds[0]
     assert "3–2" in fulltime.description
     goals = fulltime.fields[0].value

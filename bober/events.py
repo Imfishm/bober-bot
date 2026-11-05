@@ -1,6 +1,7 @@
 """
 Pure match/event logic (no Discord, no network) so it can be unit tested.
 """
+
 import math
 from collections import Counter
 from dataclasses import dataclass
@@ -161,10 +162,14 @@ def own_goal_convention(events, home_id, away_id, home_goals, away_goals):
             own[team_id] += 1
     if not own:
         return None
-    for_beneficiary = (home_goals == regular[home_id] + own[home_id]
-                       and away_goals == regular[away_id] + own[away_id])
-    for_scorer = (home_goals == regular[home_id] + own[away_id]
-                  and away_goals == regular[away_id] + own[home_id])
+    for_beneficiary = (
+        home_goals == regular[home_id] + own[home_id]
+        and away_goals == regular[away_id] + own[away_id]
+    )
+    for_scorer = (
+        home_goals == regular[home_id] + own[away_id]
+        and away_goals == regular[away_id] + own[home_id]
+    )
     if for_beneficiary == for_scorer:
         return None
     return for_beneficiary

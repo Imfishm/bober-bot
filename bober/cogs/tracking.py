@@ -1,7 +1,9 @@
 """
 Match tracking slash commands for Bober (˶ᵔ ᵕ ᵔ˶)
 """
+
 import asyncio
+import contextlib
 import os
 from datetime import datetime, timezone
 
@@ -11,8 +13,16 @@ from discord import app_commands
 from discord.ext import commands
 
 from .. import embeds
-from ..config import (API_FOOTBALL_KEY, BUDGET_FLOOR, DB_PATH, GUILD_ID, INTERVALS, LEAGUES, LINES_PATH,
-                    REPLAY_PATH)
+from ..config import (
+    API_FOOTBALL_KEY,
+    BUDGET_FLOOR,
+    DB_PATH,
+    GUILD_ID,
+    INTERVALS,
+    LEAGUES,
+    LINES_PATH,
+    REPLAY_PATH,
+)
 from ..events import CALLED_OFF, FINISHED, NOT_STARTED, estimate_requests
 from ..football_api import ApiError, FootballApi, ReplayApi, utc_now, utc_today
 from ..storage import Storage
@@ -41,18 +51,19 @@ class ConfirmUntrackView(discord.ui.View):
 
     async def on_timeout(self):
         if self.message is not None:
-            try:
-                await self.message.edit_original_response(content="⌛ Untrack request expired. Still tracking.",
-                                                          view=None)
-            except discord.HTTPException:
-                pass
+            with contextlib.suppress(discord.HTTPException):
+                await self.message.edit_original_response(
+                    content="⌛ Untrack request expired. Still tracking.", view=None
+                )
 
     @discord.ui.button(label="Stop tracking", style=discord.ButtonStyle.danger)
     async def confirm(self, interaction, button):
         self.stop()
         match = self.cog.storage.active_match()
         if match is None or match["fixture_id"] != self.fixture_id:
-            await interaction.response.edit_message(content="That match isn't being tracked anymore.", view=None)
+            await interaction.response.edit_message(
+                content="That match isn't being tracked anymore.", view=None
+            )
             return
         await interaction.response.edit_message(content="✅ Stopped tracking.", view=None)
         await self.cog.untrack(match, interaction.user)
@@ -73,7 +84,7 @@ class Tracking(commands.Cog):
         self.fetch_lock = asyncio.Lock()
 
     async def cog_load(self):
-        if REPLAY_PATH and os.path.exists(DB_PATH):
+        if REPLAY_PATH and os.path.exists(DB_PATH):  # noqa: ASYNC240 - once, at startup
             os.remove(DB_PATH)  # every replay starts from a clean slate
         self.storage = Storage(DB_PATH)
         if REPLAY_PATH:
@@ -84,7 +95,9 @@ class Tracking(commands.Cog):
                 print("WARNING: API_FOOTBALL_KEY is not set; /bober-track will not work")
             self.session = aiohttp.ClientSession()
             self.api = FootballApi(self.session, API_FOOTBALL_KEY, self.storage)
-        self.tracker = Tracker(self.bot, self.api, self.storage, embeds.BoberLines(LINES_PATH), INTERVALS)
+        self.tracker = Tracker(
+            self.bot, self.api, self.storage, embeds.BoberLines(LINES_PATH), INTERVALS
+        )
         self.resume_task = asyncio.create_task(self._resume_when_ready())
 
     async def cog_unload(self):
@@ -101,7 +114,7 @@ class Tracking(commands.Cog):
         return bool(REPLAY_PATH or API_FOOTBALL_KEY)
 
     async def todays_fixtures(self):
-        """Today's (UTC) fixtures in our leagues, fetched at most once a day."""
+        """Today's (timezone.utc) fixtures in our leagues, fetched at most once a day."""
         today = utc_today()
         async with self.fetch_lock:
             if not self.storage.has_fixture_day(today):
@@ -122,13 +135,14 @@ class Tracking(commands.Cog):
         self.storage.stop_tracking(match["fixture_id"])
         channel = self.bot.get_channel(match["channel_id"])
         if channel is not None:
-            try:
-                await channel.send(embed=embeds.notice_embed(
-                    "🛑 BOBER STOPPED TRACKING",
-                    f"{match['home_name']} vs {match['away_name']} (stopped by {user.mention})",
-                ), allowed_mentions=discord.AllowedMentions.none())
-            except discord.HTTPException:
-                pass
+            with contextlib.suppress(discord.HTTPException):
+                await channel.send(
+                    embed=embeds.notice_embed(
+                        "🛑 BOBER STOPPED TRACKING",
+                        f"{match['home_name']} vs {match['away_name']} (stopped by {user.mention})",
+                    ),
+                    allowed_mentions=discord.AllowedMentions.none(),
+                )
 
     # --- commands ---
 
@@ -142,15 +156,24 @@ class Tracking(commands.Cog):
             return []
         needle = current.lower().strip()
         matches = [
-            f for f in fixtures
-            if self.trackable(f) and needle in " ".join(
-                (f["teams"]["home"]["name"], f["teams"]["away"]["name"], f["league"]["name"])).lower()
+            f
+            for f in fixtures
+            if self.trackable(f)
+            and needle
+            in " ".join(
+                (f["teams"]["home"]["name"], f["teams"]["away"]["name"], f["league"]["name"])
+            ).lower()
         ]
         matches.sort(key=lambda f: f["fixture"]["timestamp"])
-        return [app_commands.Choice(name=fixture_label(f), value=str(f["fixture"]["id"])) for f in matches[:25]]
+        return [
+            app_commands.Choice(name=fixture_label(f), value=str(f["fixture"]["id"]))
+            for f in matches[:25]
+        ]
 
     @app_commands.guilds(GUILD_ID)
-    @app_commands.command(name="bober-track", description="Bober watches a match and shouts about it")
+    @app_commands.command(
+        name="bober-track", description="Bober watches a match and shouts about it"
+    )
     @app_commands.describe(
         match="Today's match (start typing a team name)",
         yellows="Also post yellow cards",
@@ -158,8 +181,14 @@ class Tracking(commands.Cog):
         ping_role="Role to ping on goals and full time",
     )
     @app_commands.autocomplete(match=match_autocomplete)
-    async def bober_track(self, interaction: discord.Interaction, match: str, yellows: bool = False,
-                          subs: bool = False, ping_role: discord.Role | None = None):
+    async def bober_track(
+        self,
+        interaction: discord.Interaction,
+        match: str,
+        yellows: bool = False,
+        subs: bool = False,
+        ping_role: discord.Role | None = None,
+    ):
         """Start tracking one of today's matches in this channel."""
         await interaction.response.defer(ephemeral=True)
 
@@ -167,12 +196,16 @@ class Tracking(commands.Cog):
             await interaction.followup.send(text, ephemeral=True)
 
         if not self.has_api():
-            return await fail("Bober has no API key! Ask whoever runs Bober to set `API_FOOTBALL_KEY`.")
+            return await fail(
+                "Bober has no API key! Ask whoever runs Bober to set `API_FOOTBALL_KEY`."
+            )
 
         active = self.storage.active_match()
         if active is not None:
-            return await fail(f"Bober is already tracking **{active['home_name']} vs {active['away_name']}**. "
-                              "One match at a time!")
+            return await fail(
+                f"Bober is already tracking **{active['home_name']} vs {active['away_name']}**. "
+                "One match at a time!"
+            )
 
         if not match.isdigit():
             return await fail("Pick a match from the list Bober suggests.")
@@ -182,7 +215,9 @@ class Tracking(commands.Cog):
             return await fail(f"Bober couldn't load today's matches: {e}")
         fixture = self.storage.cached_fixture(utc_today(), int(match))
         if fixture is None:
-            return await fail("That isn't one of today's matches. Pick one from the list Bober suggests.")
+            return await fail(
+                "That isn't one of today's matches. Pick one from the list Bober suggests."
+            )
         if not self.trackable(fixture):
             return await fail("That match is already over (or called off).")
 
@@ -193,48 +228,72 @@ class Tracking(commands.Cog):
 
         remaining = self.api.remaining_today()
         if remaining <= BUDGET_FLOOR:
-            return await fail(f"Bober is out of API requests for today ({remaining} left). "
-                              "Try again after 00:00 UTC.")
+            return await fail(
+                f"Bober is out of API requests for today ({remaining} left). "
+                "Try again after 00:00 UTC."
+            )
 
         status = fixture["fixture"]["status"]
         # The cached status is from the morning; if kickoff has passed, assume it's in play
         if status["short"] in NOT_STARTED and fixture["fixture"]["timestamp"] <= utc_now():
             minutes_in = (utc_now() - fixture["fixture"]["timestamp"]) // 60
-            needed = estimate_requests("2H" if minutes_in > 45 else "1H", minutes_in, INTERVALS.poll)
+            needed = estimate_requests(
+                "2H" if minutes_in > 45 else "1H", minutes_in, INTERVALS.poll
+            )
         else:
             needed = estimate_requests(status["short"], status.get("elapsed"), INTERVALS.poll)
         warning = None
         if needed > remaining - BUDGET_FLOOR:
-            warning = (f"Only ~{remaining} API requests left today and this match needs ~{needed}. "
-                       "Bober will probably go quiet before full time.")
+            warning = (
+                f"Only ~{remaining} API requests left today and this match needs ~{needed}. "
+                "Bober will probably go quiet before full time."
+            )
 
-        self.storage.start_tracking(fixture, channel.id, interaction.user.id, yellows, subs,
-                                    ping_role.id if ping_role else None, utc_now())
+        self.storage.start_tracking(
+            fixture,
+            channel.id,
+            interaction.user.id,
+            yellows,
+            subs,
+            ping_role.id if ping_role else None,
+            utc_now(),
+        )
         tracked = self.storage.active_match()
         try:
-            await channel.send(embed=embeds.tracking_embed(tracked, yellows, subs, ping_role, warning),
-                               allowed_mentions=discord.AllowedMentions.none())
+            await channel.send(
+                embed=embeds.tracking_embed(tracked, yellows, subs, ping_role, warning),
+                allowed_mentions=discord.AllowedMentions.none(),
+            )
         except discord.HTTPException as e:
             print(f"Failed to announce tracking: {e}")
         self.tracker.start(tracked["fixture_id"])
-        await interaction.followup.send("✅ Bober is on it!" + (f"\n⚠️ {warning}" if warning else ""),
-                                        ephemeral=True)
+        await interaction.followup.send(
+            "✅ Bober is on it!" + (f"\n⚠️ {warning}" if warning else ""), ephemeral=True
+        )
 
     @app_commands.guilds(GUILD_ID)
-    @app_commands.command(name="bober-untrack", description="Bober stops watching the current match")
+    @app_commands.command(
+        name="bober-untrack", description="Bober stops watching the current match"
+    )
     async def bober_untrack(self, interaction: discord.Interaction):
         """Stop tracking (confirmation required once the match has kicked off)."""
         match = self.storage.active_match()
         if match is None:
-            return await interaction.response.send_message("Bober isn't tracking anything.", ephemeral=True)
+            return await interaction.response.send_message(
+                "Bober isn't tracking anything.", ephemeral=True
+            )
 
         is_owner = interaction.user.id == match["user_id"]
         if not (is_owner or interaction.user.guild_permissions.manage_guild):
             return await interaction.response.send_message(
-                f"Only <@{match['user_id']}> or someone with Manage Server can stop this.", ephemeral=True,
-                allowed_mentions=discord.AllowedMentions.none())
+                f"Only <@{match['user_id']}> or someone with Manage Server can stop this.",
+                ephemeral=True,
+                allowed_mentions=discord.AllowedMentions.none(),
+            )
 
-        started = match["kickoff_ts"] <= utc_now() or (match["last_status"] not in (None, *NOT_STARTED))
+        started = match["kickoff_ts"] <= utc_now() or (
+            match["last_status"] not in (None, *NOT_STARTED)
+        )
         if not started:
             await interaction.response.send_message("✅ Stopped tracking.", ephemeral=True)
             return await self.untrack(match, interaction.user)
@@ -244,7 +303,8 @@ class Tracking(commands.Cog):
         await interaction.response.send_message(
             f"⚠️ ~{match['requests_used']} API requests already spent on this match, ~{remaining} left today. "
             "Another match tracked now may not make it to full time.",
-            view=view, ephemeral=True,
+            view=view,
+            ephemeral=True,
         )
         view.message = interaction
 
@@ -256,24 +316,31 @@ class Tracking(commands.Cog):
         match = self.storage.active_match()
         if match is None:
             return await interaction.response.send_message(
-                f"Bober isn't tracking anything. **{remaining}** API requests left today.", ephemeral=True)
+                f"Bober isn't tracking anything. **{remaining}** API requests left today.",
+                ephemeral=True,
+            )
 
         embed = discord.Embed(
             title="👀 BOBER STATUS",
             description=f"**{embeds.score_line(match, match['home_goals'], match['away_goals'])}**\n"
-                        f"{match['league_name']}",
+            f"{match['league_name']}",
             color=embeds.COLORS["status"],
         )
         embed.add_field(name="Match status", value=match["last_status"] or "Waiting for kickoff")
         embed.add_field(name="Kickoff", value=f"<t:{match['kickoff_ts']}:t>")
-        embed.add_field(name="Last checked",
-                        value=f"<t:{match['last_poll_at']}:R>" if match["last_poll_at"] else "Not yet")
+        embed.add_field(
+            name="Last checked",
+            value=f"<t:{match['last_poll_at']}:R>" if match["last_poll_at"] else "Not yet",
+        )
         embed.add_field(name="Channel", value=f"<#{match['channel_id']}>")
         embed.add_field(name="Started by", value=f"<@{match['user_id']}>")
-        embed.add_field(name="API requests",
-                        value=f"{match['requests_used']} used on this match, {remaining} left today")
-        await interaction.response.send_message(embed=embed, ephemeral=True,
-                                                allowed_mentions=discord.AllowedMentions.none())
+        embed.add_field(
+            name="API requests",
+            value=f"{match['requests_used']} used on this match, {remaining} left today",
+        )
+        await interaction.response.send_message(
+            embed=embed, ephemeral=True, allowed_mentions=discord.AllowedMentions.none()
+        )
 
 
 async def setup(bot):

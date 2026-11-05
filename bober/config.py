@@ -1,6 +1,7 @@
 """
 Shared configuration for Bober (˶ᵔ ᵕ ᵔ˶)
 """
+
 import os
 from dataclasses import dataclass
 from pathlib import Path
@@ -23,7 +24,7 @@ GUILD_ID = 1446565791452364935
 
 API_BASE = "https://v3.football.api-sports.io"
 DAILY_REQUEST_LIMIT = 100  # free tier, resets at 00:00 UTC
-BUDGET_FLOOR = 5           # stop polling when this many requests (or fewer) remain
+BUDGET_FLOOR = 5  # stop polling when this many requests (or fewer) remain
 
 # league id -> display name
 LEAGUES = {
@@ -40,12 +41,12 @@ LINES_PATH = str(DATA_DIR / "bober_lines.json")
 
 @dataclass(frozen=True)
 class Intervals:
-    poll: int               # seconds between polls while live
-    halftime_pause: int     # sleep after seeing HT (half-time is ~15 min; wake a bit early)
-    prestart_recheck: int   # recheck interval when kickoff time passed but match not live yet
+    poll: int  # seconds between polls while live
+    halftime_pause: int  # sleep after seeing HT (half-time is ~15 min; wake a bit early)
+    prestart_recheck: int  # recheck interval when kickoff time passed but match not live yet
     prestart_max_wait: int  # give up if still not live this long after scheduled kickoff
-    give_up_after: int      # stop tracking this long after scheduled kickoff no matter what
-    failure_alert: int      # consecutive failed polls before posting "lost signal"
+    give_up_after: int  # stop tracking this long after scheduled kickoff no matter what
+    failure_alert: int  # consecutive failed polls before posting "lost signal"
 
 
 LIVE_INTERVALS = Intervals(

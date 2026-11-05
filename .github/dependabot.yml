@@ -18,3 +18,4 @@ updates:
       dev:
         patterns:
           - "pytest"
+          - "ruff"
