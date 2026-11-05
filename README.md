@@ -8,7 +8,7 @@ Covered leagues: Premier League, La Liga, Ligue 1, Bundesliga and the World Cup.
 
 | Command | What it does |
 | --- | --- |
-| `/bober-track match [yellows] [subs] [ping_role]` | Track one of today's matches in this channel. Start typing a team name to pick it. `yellows` and `subs` also post yellow cards and substitutions; `ping_role` is pinged on goals and full time. |
+| `/bober-track match [yellows] [subs] [ping_role]` | Track one of today's matches in this channel (around midnight UTC, the list also shows yesterday's still-running matches and tomorrow's early kickoffs). Start typing a team name to pick it. `yellows` and `subs` also post yellow cards and substitutions; `ping_role` is pinged on goals and full time. |
 | `/bober-untrack` | Stop tracking (the person who started it, or anyone with Manage Server). Asks for confirmation once the match has kicked off. |
 | `/bober-status` | The tracked match, its score, and how many API requests are left today. |
 

@@ -16,6 +16,7 @@ from .. import embeds
 from ..config import (
     API_FOOTBALL_KEY,
     BUDGET_FLOOR,
+    DAILY_REQUEST_LIMIT,
     DB_PATH,
     GUILD_ID,
     INTERVALS,
@@ -24,16 +25,25 @@ from ..config import (
     REPLAY_PATH,
 )
 from ..events import CALLED_OFF, FINISHED, NOT_STARTED, estimate_requests
-from ..football_api import ApiError, FootballApi, ReplayApi, utc_now, utc_today
+from ..football_api import ApiError, FootballApi, ReplayApi, utc_now
 from ..storage import Storage
 from ..tracker import Tracker
 
 HIDDEN_STATUSES = FINISHED | CALLED_OFF
+DAY = 24 * 60 * 60
+# Tomorrow's fixtures kicking off this soon after midnight UTC are listed this long before it
+NEARBY = 6 * 60 * 60
+FETCH_RETRY = 60  # seconds before a failed fixture-list fetch is tried again
+
+
+def utc_date(ts):
+    return datetime.fromtimestamp(ts, timezone.utc).strftime("%Y-%m-%d")
 
 
 def fixture_label(f):
     home, away = f["teams"]["home"]["name"], f["teams"]["away"]["name"]
-    kickoff = datetime.fromtimestamp(f["fixture"]["timestamp"], timezone.utc).strftime("%H:%M")
+    # The weekday tells tonight's 23:30 from tomorrow's 00:30 now that the list spans days
+    kickoff = datetime.fromtimestamp(f["fixture"]["timestamp"], timezone.utc).strftime("%a %H:%M")
     started = " (started)" if f["fixture"]["timestamp"] <= utc_now() else ""
     return f"{home} vs {away} — {kickoff} UTC{started} · {f['league']['name']}"[:100]
 
@@ -82,6 +92,7 @@ class Tracking(commands.Cog):
         self.api = None
         self.tracker = None
         self.fetch_lock = asyncio.Lock()
+        self.retry_after = {}  # UTC date -> no fixture-list fetch before this timestamp
 
     async def cog_load(self):
         if REPLAY_PATH and os.path.exists(DB_PATH):  # noqa: ASYNC240 - once, at startup
@@ -114,15 +125,49 @@ class Tracking(commands.Cog):
     def has_api(self):
         return bool(REPLAY_PATH or API_FOOTBALL_KEY)
 
-    async def todays_fixtures(self):
-        """Today's (timezone.utc) fixtures in our leagues, fetched at most once a day."""
-        today = utc_today()
+    async def fixtures_on_day(self, ts):
+        """Fixtures in our leagues on the UTC day containing `ts`, fetched at most once per day."""
+        day = utc_date(ts)
         async with self.fetch_lock:
-            if not self.storage.has_fixture_day(today):
-                fixtures = await self.api.fixtures_on(today)
+            if not self.storage.has_fixture_day(day):
+                # Autocomplete runs per keystroke; don't spend a request on each while the API fails
+                if utc_now() < self.retry_after.get(day, 0):
+                    raise ApiError("the API just failed, try again in a minute")
+                try:
+                    fixtures = await self.api.fixtures_on(day)
+                except ApiError:
+                    self.retry_after[day] = utc_now() + FETCH_RETRY
+                    raise
                 ours = [f for f in fixtures if f["league"]["id"] in LEAGUES]
-                self.storage.save_fixture_day(today, ours, utc_now())
-        return self.storage.fixtures_for_day(today)
+                self.storage.save_fixture_day(day, ours, utc_now())
+        return self.storage.fixtures_for_day(day)
+
+    async def nearby_fixtures(self):
+        """
+        Today's fixtures, plus yesterday's while its late matches can still be running and, in
+        the last hours before midnight UTC, tomorrow's early kickoffs (evening in the Americas).
+        Tomorrow's list is the one tomorrow would fetch anyway, so this costs at most one extra
+        request a day (yesterday's, if nobody looked at it yesterday).
+        """
+        now = utc_now()
+        midnight = now - now % DAY
+        tomorrow = midnight + DAY
+        fixtures = await self.fixtures_on_day(now)  # an error here fails the whole lookup
+        try:
+            if now - midnight < INTERVALS.give_up_after:
+                fixtures += await self.fixtures_on_day(midnight - 1)
+            if tomorrow - now < NEARBY:
+                fixtures += [
+                    f
+                    for f in await self.fixtures_on_day(tomorrow)
+                    if f["fixture"]["timestamp"] < tomorrow + NEARBY
+                ]
+        except ApiError as e:
+            print(f"Adjacent-day fixture fetch failed: {e}")
+        unique = {}  # replay mode serves the same fixtures for every date
+        for f in fixtures:
+            unique.setdefault(f["fixture"]["id"], f)
+        return list(unique.values())
 
     @staticmethod
     def trackable(f):
@@ -151,7 +196,7 @@ class Tracking(commands.Cog):
         if not self.has_api():
             return []
         try:
-            fixtures = await self.todays_fixtures()
+            fixtures = await self.nearby_fixtures()
         except ApiError as e:
             print(f"Autocomplete fixture fetch failed: {e}")
             return []
@@ -176,7 +221,7 @@ class Tracking(commands.Cog):
         name="bober-track", description="Bober watches a match and shouts about it"
     )
     @app_commands.describe(
-        match="Today's match (start typing a team name)",
+        match="Match to track (start typing a team name)",
         yellows="Also post yellow cards",
         subs="Also post substitutions",
         ping_role="Role to ping on goals and full time",
@@ -190,7 +235,7 @@ class Tracking(commands.Cog):
         subs: bool = False,
         ping_role: discord.Role | None = None,
     ):
-        """Start tracking one of today's matches in this channel."""
+        """Start tracking one of the listed matches in this channel."""
         await interaction.response.defer(ephemeral=True)
 
         async def fail(text):
@@ -211,13 +256,13 @@ class Tracking(commands.Cog):
         if not match.isdigit():
             return await fail("Pick a match from the list Bober suggests.")
         try:
-            await self.todays_fixtures()
+            fixtures = await self.nearby_fixtures()
         except ApiError as e:
-            return await fail(f"Bober couldn't load today's matches: {e}")
-        fixture = self.storage.cached_fixture(utc_today(), int(match))
+            return await fail(f"Bober couldn't load the match list: {e}")
+        fixture = next((f for f in fixtures if f["fixture"]["id"] == int(match)), None)
         if fixture is None:
             return await fail(
-                "That isn't one of today's matches. Pick one from the list Bober suggests."
+                "That isn't a match Bober can track right now. Pick one from the list Bober suggests."
             )
         if not self.trackable(fixture):
             return await fail("That match is already over (or called off).")
@@ -227,7 +272,12 @@ class Tracking(commands.Cog):
         if not (perms.send_messages and perms.embed_links):
             return await fail("Bober can't post embeds in this channel. Check his permissions.")
 
-        remaining = self.api.remaining_today()
+        now = utc_now()
+        if fixture["fixture"]["timestamp"] >= now - now % DAY + DAY:
+            # Kicks off after 00:00 UTC, so it polls on tomorrow's fresh budget
+            remaining = DAILY_REQUEST_LIMIT
+        else:
+            remaining = self.api.remaining_today()
         if remaining <= BUDGET_FLOOR:
             return await fail(
                 f"Bober is out of API requests for today ({remaining} left). "

@@ -69,7 +69,8 @@ class ScriptedApi:
     """
     Stand-in for FootballApi. fixture() serves `steps` in order (staying on the last one); a step
     can be a dict (returned), an exception (raised) or a callable taking the api (its result is
-    used, so a step can also change `remaining`). fixtures_on() serves `fixtures` (or raises it).
+    used, so a step can also change `remaining`). fixtures_on() serves `fixtures` (or raises it)
+    for any date; `fixtures` can also be a dict of date -> list (or exception), missing dates empty.
     """
 
     def __init__(self, steps=(), fixtures=(), remaining=100):
@@ -84,9 +85,12 @@ class ScriptedApi:
 
     async def fixtures_on(self, utc_date):
         self.fixtures_on_calls += 1
-        if isinstance(self.fixtures, BaseException):
-            raise self.fixtures
-        return copy.deepcopy(list(self.fixtures))
+        fixtures = self.fixtures
+        if isinstance(fixtures, dict):
+            fixtures = fixtures.get(utc_date, [])
+        if isinstance(fixtures, BaseException):
+            raise fixtures
+        return copy.deepcopy(list(fixtures))
 
     async def fixture(self, fixture_id):
         step = self.steps[min(self.fixture_calls, len(self.steps) - 1)]
