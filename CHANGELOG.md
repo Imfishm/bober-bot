@@ -41,3 +41,11 @@
 ### Removed
 - bober-time command
 - bober-play command, yt-dlp, voice support and the ffmpeg requirement
+
+## v1.0.1-beta - 2026-11-04
+### Added
+- CI test workflow (pytest on Python 3.10 and 3.13, with a coverage report)
+- Tests for the slash commands, the API client, storage, the poll loop and booting the bot, plus known bugs as expected-failure tests
+### Reworked
+- Unloading the tracking cog now cancels its pending resume task
+- Tests fail on leaked resources and un-awaited coroutines

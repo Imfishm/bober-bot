@@ -101,6 +101,7 @@ class Tracking(commands.Cog):
         self.resume_task = asyncio.create_task(self._resume_when_ready())
 
     async def cog_unload(self):
+        self.resume_task.cancel()
         self.tracker.stop()
         if self.session:
             await self.session.close()
